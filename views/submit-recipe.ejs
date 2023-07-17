@@ -1,0 +1,111 @@
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-f fw-bold">Submit Your Recipe</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead">
+      Share your amazing recipies accross the world. Fill our form to get
+      started
+    </p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <% if(infoSubmitObjs != '') {%>
+  <div class="col-8 alert alert-success" role="alert"><%= infoSubmitObjs%></div>
+  <%}%> <% if(infoErrorObjs != '') {%>
+  <div class="col-8 alert alert-danger" role="alert">
+    <%= infoErrorObjs[0].message %>
+  </div>
+  <%}%>
+
+  <div class="col-8">
+    <form action="/submit-recipe" enctype="multipart/form-data" method="POST">
+      <div class="row g-3">
+        <div class="col-32">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            required
+          />
+        </div>
+
+        <div class="col-32">
+          <label for="name" class="form-label">Recipe Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            required
+          />
+        </div>
+
+        <div class="col-32">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            name="description"
+            class="form-control"
+            id="description"
+            cols="30"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        <div class="col-32">
+          <label for="ingredients" class="form-label">Ingredients</label>
+          <small><br />Example: Ice</small>
+          <div class="ingredientList">
+            <div class="ingredientsDiv">
+              <input type="text" class="form-control" name="ingredients" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="addIngedientsBtn"
+          >
+            + Ingredient
+          </button>
+        </div>
+
+        <div class="col-12">
+          <label for="category">Select Category</label>
+          <select
+            required
+            class="form-select form-control"
+            name="category"
+            aria-label="Cateogry"
+          >
+            <option selected>Select Cateogry</option>
+            <option value="Thai">Thai</option>
+            <option value="American">American</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Pakistani">Pakistani</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="image">Product Image</label>
+          <input
+            type="file"
+            class="form-control"
+            name="image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit Recipe</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
